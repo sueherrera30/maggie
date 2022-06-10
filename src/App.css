@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
+body {
+  color: #9761b4;
+  display: flex;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  justify-content: center;
+  height: 100vh;
+  background: rgb(185,207,185);
+background: linear-gradient(168deg, rgba(185,207,185,0.9094231442577031) 36%, rgba(185,204,197,0.9094231442577031) 49%, rgba(185,202,207,1) 59%, rgba(190,159,206,1) 82%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.maggie {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+}
+.birthdayCard {
+  position: relative;
+  width: 550px;
+  height: 750px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: 1s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.birthdayCard:hover {
+  transform: perspective(2500px) rotate(5deg);
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    0 10px 100px rgba(0, 0, 0, 0.5);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg);
+}
+
+.birthdayCard:hover .happy {
+  visibility: hidden;
+}
+
+.cardFront {
+  position: relative;
+  background-color: #fff;
+  width: 550px;
+  height: 750px;
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
+    30px 0 50px rgba(0, 0, 0, 0.4);
+  transition: 0.6s;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+  font-weight: 600;
+  font-size: 18px;
+  color: #be9fce;
+  text-decoration: none;
+}
+p {
+  font-size: 12px;
+  padding: 8px;
+}
+.happy {
+  text-align: center;
+  margin: 12px;
+  transition: 0.1s;
+  backface-visibility: visible;
+  font-family: 'Dawning of a New Day', cursive;
+  font-weight: 600;
+  font-size: 28px;
+  color: #be9fce;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 550px;
+  height: 750px;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+}
+
+@media (max-width: 425px) {
+  .cardFront {
+    width: 300px;
+    height: 350px;
   }
-  to {
-    transform: rotate(360deg);
+  .birthdayCard {
+    width: 300px;
+    height: 350px;
+  }
+  .cardInside {
+    width: 300px;
+    height: 350px;
+  }
+
+  .maggie {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+  }
+  .birthdayCard:hover {
+    transform: perspective(1000px) rotate(90deg);
+  }
+  .birthdayCard {
+    transform: perspective(1000px);
+    margin-top: 200px;
+  }
+  .birthdayCard:hover {
+    transform: perspective(1000px) rotate(90deg);
   }
 }
